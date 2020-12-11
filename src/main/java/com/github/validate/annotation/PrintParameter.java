@@ -8,7 +8,6 @@ import java.lang.annotation.*;
  *
  * @author MENG
  * @version 2017/7/13
- * @see
  */
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
@@ -18,7 +17,7 @@ public @interface PrintParameter
     /**
      * 函数描述
      *
-     * @return
+     * @return 自定义返回描述
      */
     String description()  default "";
 }

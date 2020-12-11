@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author MENG
  * @version 2017/7/13
- * @see
  */
 @Aspect
 @Component
@@ -40,6 +39,7 @@ public class PrintParameterAspect
      * 方法执行之前
      *
      * @param joinPoint 参数
+     * @param printParameter 打印参数注解
      */
     @Before("pointCutMethod()&&@annotation(printParameter)")
     public void before(JoinPoint joinPoint, PrintParameter printParameter)

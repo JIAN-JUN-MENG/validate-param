@@ -8,7 +8,6 @@ import java.lang.annotation.*;
  *
  * @author MENG
  * @version 2019/1/21
- * @see
  */
 @Inherited
 @Target({ ElementType.FIELD})
@@ -19,9 +18,14 @@ public @interface SpecialAndRequireFieldMany
     /**
      * 用于 描述字段的名称 也可用于提示用户
      *
-     * @return
+     * @return 返回描述
      */
     String description() default "";
 
+    /**
+     * 特殊必填验证注解
+     *
+     * @return 返回注解
+     */
     SpecialAndRequireField[] values() default {};
 }

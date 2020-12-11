@@ -23,7 +23,6 @@ import java.lang.reflect.Method;
  *
  * @author MENG
  * @version 2017/7/13
- * @see
  */
 @Aspect
 @Component
@@ -41,10 +40,10 @@ public class ValidateParameterAspect
 
     /**
      * 环绕
-     * @param
-     * @param pjp
-     * @return
-     * @throws Throwable
+     *
+     * @param pjp ProceedingJoinPoint
+     * @return Object
+     * @throws Throwable 抛出异常
      */
     @Around("pointCutMethod()")
     public Object Around(ProceedingJoinPoint pjp) throws Throwable

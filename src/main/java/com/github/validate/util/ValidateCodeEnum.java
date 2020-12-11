@@ -5,7 +5,6 @@ package com.github.validate.util;
  *
  * @author MENG
  * @version 2018/9/15
- * @see
  */
 public enum ValidateCodeEnum {
     //当code == 00000 程序调用成功

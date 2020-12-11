@@ -8,7 +8,6 @@ import java.io.Serializable;
  *
  * @author MENG
  * @version 2019/3/27
- * @see
  */
 public class ValidateResult<T> implements Serializable
 {

@@ -8,7 +8,6 @@ import com.github.validate.annotation.*;
  *
  * @author MENG
  * @version 2020/3/24
- * @see
  */
 public class ParamTestModelDto extends BaseValidate
 {

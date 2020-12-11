@@ -14,13 +14,12 @@ import java.util.List;
  *
  * 3: spring boot 扫描器必须扫描 com.github.validate 目录
  *
- *    @ComponentScan({"com.github.**","......"})
+ *    ComponentScan({"com.github.**","......"})
  *
- * 4: 需要验证的接口需要加上 @ValidateParameter 注解
+ * 4: 需要验证的接口需要加上 ValidateParameter 注解
  *
  * @author MENG
  * @version 2020/3/24
- * @see
  */
 public class ParamTestDto extends ParamTestDto_father
 {
@@ -204,7 +203,7 @@ public class ParamTestDto extends ParamTestDto_father
     /**
      * 包含有 validateSign 函数,会自动执行验签函数
      *
-     * @return
+     * @return boolean
      */
     public Boolean validateSign()
     {

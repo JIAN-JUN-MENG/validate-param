@@ -14,14 +14,13 @@ import java.util.regex.Pattern;
  *
  * @author MENG
  * @version 2018/7/11
- * @see
  */
 public class ValidateUtil
 {
     /**
      * 检查Email 是否合法
-     * @param email
-     * @return
+     * @param email 邮箱
+     * @return boolean
      */
     public static boolean checkEmail(String email)
     {
@@ -36,8 +35,8 @@ public class ValidateUtil
 
     /**
      * 检查phone 是否合法
-     * @param phone
-     * @return
+     * @param phone 电话
+     * @return boolean
      */
     public static boolean checkPhone(String phone)
     {
@@ -53,7 +52,7 @@ public class ValidateUtil
     /**
      * 返会 成功
      *
-     * @return
+     * @return ValidateResult
      */
     public static ValidateResult returnSuccess()
     {
@@ -69,7 +68,8 @@ public class ValidateUtil
     /**
      * 返会 成功
      *
-     * @return
+     * @param data 返回数据
+     * @return ValidateResult
      */
     public static ValidateResult returnSuccess(Object data)
     {
@@ -85,9 +85,11 @@ public class ValidateUtil
     }
 
     /**
-     * 返会 错误
+     * 返回错误
      *
-     * @return
+     * @param code 错误代码
+     * @param message 错误信息
+     * @return ValidateResult
      */
     public static ValidateResult returnError(String code,String message)
     {
@@ -103,7 +105,8 @@ public class ValidateUtil
     /**
      * 返会 错误
      *
-     * @return
+     * @param codeEnum 错误枚举
+     * @return ValidateResult
      */
     public static ValidateResult returnError(ValidateCodeEnum codeEnum)
     {
@@ -118,8 +121,9 @@ public class ValidateUtil
 
     /**
      * 获取对象所有属性 包含父级
-     * @param object
-     * @return
+     *
+     * @param object 获取对象
+     * @return 对象所有字段
      */
     public static Field[] getAllFields(Object object)
     {
@@ -144,9 +148,9 @@ public class ValidateUtil
     /**
      * 根据字段名获取字段
      *
-     * @param fieldNames
-     * @param fields
-     * @return
+     * @param fieldNames 字段名称
+     * @param fields 字段数组
+     * @return 字段数组
      */
     public static Field[] getFieldsByFieldName(String[] fieldNames,Field[] fields)
     {

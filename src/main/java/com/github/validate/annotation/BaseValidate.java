@@ -20,14 +20,16 @@ import java.util.regex.Pattern;
  *
  * @author MENG
  * @version 2019/1/21
- * @see
  */
 public class BaseValidate
 {
     /**
      * 公共 验证必填字段
      *
-     * @return fields  需要验证的field
+     * @param thiz  验证的当前对象
+     * @param fields 需要验证的field
+     * @return validateResult
+     * @throws IllegalAccessException 私有字段访问权限异常
      */
     protected ValidateResult requireField(Object thiz, Field... fields)
         throws IllegalAccessException
@@ -64,9 +66,12 @@ public class BaseValidate
     }
 
     /**
-     * 公共 验证必填字段
+     * 特殊必填验证（多项）
      *
-     * @return fields  需要验证的field
+     * @param thiz  验证的当前对象
+     * @param fields 需要验证的field
+     * @return validateResult
+     * @throws IllegalAccessException 私有字段访问权限异常
      */
     protected ValidateResult specialAndRequireFieldMany(Object thiz,Field... fields)
             throws IllegalAccessException
@@ -105,6 +110,16 @@ public class BaseValidate
         return ValidateUtil.returnSuccess();
     }
 
+    /**
+     *
+     *
+     * @param obj SpecialAndRequireField注解对象
+     * @param thiz 当前验证对象
+     * @param field 验证的当前字段
+     * @param fields 验证的所有字段
+     * @return validateResult
+     * @throws IllegalAccessException 私有字段访问权限异常
+     */
     private ValidateResult validateSpecialAndRequireField(SpecialAndRequireField obj,Object thiz,Field field,Field[] fields) throws IllegalAccessException
     {
 //        for (Field field : fields)
@@ -172,9 +187,12 @@ public class BaseValidate
     }
 
     /**
-     * 公共 验证必填字段
+     * 特殊必填 验证
      *
-     * @return fields  需要验证的field
+     * @param thiz  验证的当前对象
+     * @param fields 需要验证的field
+     * @return validateResult
+     * @throws IllegalAccessException 私有字段访问权限异常
      */
     protected ValidateResult specialAndRequireField(Object thiz,Field... fields)
         throws IllegalAccessException
@@ -249,9 +267,12 @@ public class BaseValidate
     }
 
     /**
-     * 公共 验证必填字段
+     * 特殊选填验证
      *
-     * @return fields  需要验证的field
+     * @param thiz  验证的当前对象
+     * @param fields 需要验证的field
+     * @return validateResult
+     * @throws IllegalAccessException 私有字段访问权限异常
      */
     protected ValidateResult specialOrRequireField(Object thiz,Field... fields)
         throws IllegalAccessException
@@ -317,6 +338,12 @@ public class BaseValidate
     }
 
 
+    /**
+     * 判断是否有值
+     *
+     * @param value 验证值
+     * @return boolean
+     */
     public boolean isFill(Object value)
     {
         Boolean isFill = true;
@@ -350,7 +377,10 @@ public class BaseValidate
     /**
      * 公共 验证字段长度合法性
      *
-     * @return
+     * @param thiz  验证的当前对象
+     * @param fields 需要验证的field
+     * @return validateResult
+     * @throws IllegalAccessException 私有字段访问权限异常
      */
     protected ValidateResult lengthIllegal(Object thiz,Field... fields)
         throws IllegalAccessException
@@ -412,7 +442,10 @@ public class BaseValidate
     /**
      * 是否是数字 int 类型 和 范围验证
      *
-     * @return
+     * @param thiz  验证的当前对象
+     * @param fields 需要验证的field
+     * @return validateResult
+     * @throws IllegalAccessException 私有字段访问权限异常
      */
     protected ValidateResult integerIllegal(Object thiz,Field... fields)
         throws IllegalAccessException
@@ -472,7 +505,10 @@ public class BaseValidate
     /**
      * 是否是数字 double 类型 和 范围验证
      *
-     * @return
+     * @param thiz  验证的当前对象
+     * @param fields 需要验证的field
+     * @return validateResult
+     * @throws IllegalAccessException 私有字段访问权限异常
      */
     protected ValidateResult doubleIllegal(Object thiz,Field... fields)
         throws IllegalAccessException
@@ -533,7 +569,10 @@ public class BaseValidate
     /**
      * 是否是数字 long 类型 和 范围验证
      *
-     * @return
+     * @param thiz  验证的当前对象
+     * @param fields 需要验证的field
+     * @return validateResult
+     * @throws IllegalAccessException 私有字段访问权限异常
      */
     protected ValidateResult longIllegal(Object thiz,Field... fields)
         throws IllegalAccessException
@@ -593,7 +632,10 @@ public class BaseValidate
     /**
      * 是否是日期类型
      *
-     * @return
+     * @param thiz  验证的当前对象
+     * @param fields 需要验证的field
+     * @return validateResult
+     * @throws IllegalAccessException 私有字段访问权限异常
      */
     protected ValidateResult dateIllegal(Object thiz,Field... fields) throws IllegalAccessException
     {
@@ -647,7 +689,10 @@ public class BaseValidate
     /**
      * 是否是Boolean类型
      *
-     * @return
+     * @param thiz  验证的当前对象
+     * @param fields 需要验证的field
+     * @return validateResult
+     * @throws IllegalAccessException 私有字段访问权限异常
      */
     protected ValidateResult booleanIllegal(Object thiz,Field... fields) throws IllegalAccessException
     {
@@ -692,12 +737,15 @@ public class BaseValidate
     }
 
     /**
-     * 公共 验证必填字段
+     * 是否是LIST类型
      *
-     * @return fields  需要验证的field
+     * @param thiz  验证的当前对象
+     * @param fields 需要验证的field
+     * @return validateResult
+     * @throws IllegalAccessException 私有字段访问权限异常
      */
     protected ValidateResult listIllegal(Object thiz,Field... fields)
-        throws IllegalAccessException, InvocationTargetException
+        throws IllegalAccessException
     {
         if(fields == null || fields.length == 0)
         {
@@ -765,12 +813,15 @@ public class BaseValidate
     }
 
     /**
-     * 公共 验证必填字段
+     * 是否是对象（除MAP LIST STRING）
      *
-     * @return fields  需要验证的field
+     * @param thiz  验证的当前对象
+     * @param fields 需要验证的field
+     * @return validateResult
+     * @throws IllegalAccessException 私有字段访问权限异常
      */
     protected ValidateResult modelIllegal(Object thiz,Field... fields)
-        throws IllegalAccessException, InvocationTargetException
+        throws IllegalAccessException
     {
         if(fields == null || fields.length == 0)
         {
@@ -834,11 +885,14 @@ public class BaseValidate
     }
 
     /**
-     * 公共 验证必填字段
+     * 正则验证
      *
-     * @return fields  需要验证的field
+     * @param thiz  验证的当前对象
+     * @param fields 需要验证的field
+     * @return validateResult
+     * @throws IllegalAccessException 私有字段访问权限异常
      */
-    protected ValidateResult regularIllegal(Object thiz,Field... fields) throws IllegalAccessException, InvocationTargetException
+    protected ValidateResult regularIllegal(Object thiz,Field... fields) throws IllegalAccessException
     {
         if(fields == null || fields.length == 0)
         {
@@ -886,10 +940,11 @@ public class BaseValidate
 
     /**
      * 公共ruturn 函数
-     * @param description
-     * @param field
-     * @param codeEnum
-     * @return
+     *
+     * @param description 自定义返回错误描述
+     * @param field 验证的字段
+     * @param codeEnum 默认返回的错误描述
+     * @return validateResult
      */
     public ValidateResult publicReturn(String description,Field field,ValidateCodeEnum codeEnum)
     {
@@ -905,10 +960,11 @@ public class BaseValidate
 
     /**
      * 公共ruturn 函数
-     * @param description
-     * @param fieldNames
-     * @param codeEnum
-     * @return
+     *
+     * @param description 自定义返回错误描述
+     * @param fieldNames 验证的字段的名称
+     * @param codeEnum 默认返回的错误描述
+     * @return validateResult
      */
     public ValidateResult publicReturn(String description,String fieldNames,ValidateCodeEnum codeEnum)
     {
@@ -926,8 +982,10 @@ public class BaseValidate
     /**
      * 公共验证函数
      *
-     * @return
-     * @throws IllegalAccessException
+     * @param thiz 验证对象
+     * @return validateResult
+     * @throws IllegalAccessException 是否有访问字段权限
+     * @throws InvocationTargetException 反射异常
      */
     public ValidateResult validate(Object thiz)
         throws IllegalAccessException, InvocationTargetException
@@ -1034,8 +1092,8 @@ public class BaseValidate
     /**
      * 公共验签
      *
-     * @return
-     * @throws Exception
+     * @return Boolean
+     * @throws Exception 抛出公共异常
      */
     protected Boolean validateSign() throws Exception
     {

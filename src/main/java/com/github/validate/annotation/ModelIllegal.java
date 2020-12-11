@@ -8,7 +8,6 @@ import java.lang.annotation.*;
  *
  * @author MENG
  * @version 2019/1/21
- * @see
  */
 @Target({ ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
@@ -18,7 +17,7 @@ public @interface ModelIllegal
     /**
      * 用于 描述字段的名称 也可用于提示用户
      *
-     * @return
+     * @return 自定义返回描述
      */
     String description() default "";
 

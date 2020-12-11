@@ -5,7 +5,6 @@ package com.github.validate.util;
  *
  * @author MENG
  * @version 2018/8/28
- * @see
  */
 public class ValidateConstants
 {

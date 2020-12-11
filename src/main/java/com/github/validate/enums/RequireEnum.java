@@ -5,7 +5,6 @@ package com.github.validate.enums;
  *
  * @author MENG
  * @version 2020/3/24
- * @see
  */
 public enum RequireEnum
 {
