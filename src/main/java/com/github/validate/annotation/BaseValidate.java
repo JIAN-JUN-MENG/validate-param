@@ -234,7 +234,7 @@ public class BaseValidate
 
                     if(isExists == false)
                     {
-                        return ValidateUtil.returnSuccess();
+                        continue;
                     }
                 }
 
@@ -409,8 +409,7 @@ public class BaseValidate
                 //判断是否为空
                 if (value == null || "".equals(value))
                 {
-//                    return publicReturn(description,field,ValidateCodeEnum.LENGTH_ILLEGAL);
-                    return ValidateUtil.returnSuccess();
+                    continue;
                 }
 
                 //判断长度是否合法
@@ -475,8 +474,7 @@ public class BaseValidate
                 //判断是否为空
                 if (value == null || "".equals(value))
                 {
-//                    return publicReturn(description,field,ValidateCodeEnum.NUMBER_ILLEGAL);
-                    return ValidateUtil.returnSuccess();
+                    continue;
                 }
 
                 //判断是否是数字格式
@@ -538,8 +536,7 @@ public class BaseValidate
                 //判断是否为空
                 if (value == null || "".equals(value))
                 {
-//                    return publicReturn(description,field,ValidateCodeEnum.NUMBER_ILLEGAL);
-                    return ValidateUtil.returnSuccess();
+                    continue;
                 }
 
                 //判断是否是数字格式
@@ -602,8 +599,7 @@ public class BaseValidate
                 //判断是否为空
                 if (value == null || "".equals(value))
                 {
-//                    return publicReturn(description,field,ValidateCodeEnum.NUMBER_ILLEGAL);
-                    return ValidateUtil.returnSuccess();
+                    continue;
                 }
 
                 //判断是否是数字格式
@@ -662,8 +658,7 @@ public class BaseValidate
                 //判断是否为空
                 if (value == null || "".equals(value))
                 {
-//                    return publicReturn(description,field,ValidateCodeEnum.DATE_ILLEGAL);
-                    return ValidateUtil.returnSuccess();
+                    continue;
                 }
 
 
@@ -716,8 +711,7 @@ public class BaseValidate
                 //判断是否为空
                 if (value == null || "".equals(value))
                 {
-//                    return publicReturn(description,field,ValidateCodeEnum.DATE_ILLEGAL);
-                    return ValidateUtil.returnSuccess();
+                    continue;
                 }
 
 
@@ -772,7 +766,7 @@ public class BaseValidate
 
                         if (list.size() == 0)
                         {
-                            return ValidateUtil.returnSuccess();
+                            continue;
                         }
 
                         BaseValidate validate = new BaseValidate();
@@ -874,7 +868,7 @@ public class BaseValidate
                         }
                         catch (Exception e)
                         {
-                            return ValidateUtil.returnSuccess();
+                            continue;
                         }
                     }
                 }
