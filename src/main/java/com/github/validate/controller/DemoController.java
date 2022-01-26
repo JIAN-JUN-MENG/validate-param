@@ -34,7 +34,8 @@ public class DemoController
     public ValidateResult paramTest(HttpServletRequest request, @RequestBody ParamTestDto paramTestDto)
     {
         //TODO SOMETHING
-
+        System.out.println("FIELD ="+paramTestDto.getRequireField());
+        System.out.println("FIELD ="+paramTestDto.getRemoveSpace());
         return ValidateUtil.returnSuccess();
     }
 }

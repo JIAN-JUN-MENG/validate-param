@@ -31,8 +31,11 @@ public class ParamTestDto extends ParamTestDto_father
      * 备注 :
      */
     @RequireField
+    @RemoveSpace
     private String requireField;
 
+    @RemoveSpace
+    private String removeSpace;
     /**
      * 必填参数注解
      *
@@ -428,5 +431,15 @@ public class ParamTestDto extends ParamTestDto_father
     public void setAndOneOrAndTwo(String andOneOrAndTwo)
     {
         this.andOneOrAndTwo = andOneOrAndTwo;
+    }
+
+    public String getRemoveSpace()
+    {
+        return removeSpace;
+    }
+
+    public void setRemoveSpace(String removeSpace)
+    {
+        this.removeSpace = removeSpace;
     }
 }

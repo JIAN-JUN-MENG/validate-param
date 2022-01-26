@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 
 //@ComponentScan({"com.github.**"})
-//@SpringBootApplication
+@SpringBootApplication
 public class ValidateParamApplication
 {
 	public static void main(String[] args)

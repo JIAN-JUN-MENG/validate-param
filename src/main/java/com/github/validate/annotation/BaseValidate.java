@@ -24,6 +24,52 @@ import java.util.regex.Pattern;
 public class BaseValidate
 {
     /**
+     * 移除字段空格
+     *
+     * @param thiz  验证的当前对象
+     * @param fields 需要验证的field
+     * @return validateResult
+     * @throws IllegalAccessException 私有字段访问权限异常
+     */
+    protected void removeSpace(Object thiz, Field... fields)
+            throws IllegalAccessException
+    {
+        if(fields == null || fields.length == 0)
+        {
+            fields = thiz.getClass().getDeclaredFields();
+        }
+
+        for (Field field : fields)
+        {
+            if (field.isAnnotationPresent(RemoveSpace.class))
+            {
+                RemoveSpace obj = field.getAnnotation(RemoveSpace.class);
+
+                String description = obj.description();// 获取注解描述
+
+                field.setAccessible(true); // 设置属性是可以访问的(私有的也可以)
+
+                Object value = field.get(thiz);
+
+                Boolean isFill = true;
+
+                isFill = isFill(value);
+
+                if(isFill == true)
+                {
+                    if(value instanceof String)
+                    {
+                        value = ((String) value).trim();
+
+                        field.set(thiz,value);
+                    }
+                }
+            }
+        }
+
+    }
+
+    /**
      * 公共 验证必填字段
      *
      * @param thiz  验证的当前对象
@@ -988,6 +1034,9 @@ public class BaseValidate
 
         //获取子类或者父类的所有属性
         Field[] fields = ValidateUtil.getAllFields(thiz);
+
+        //执行移除空格注解
+        removeSpace(thiz,fields);
 
         validateResult = requireField(thiz,fields);
 
